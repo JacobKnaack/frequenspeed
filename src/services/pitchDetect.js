@@ -1,44 +1,26 @@
 /*
-The MIT License (MIT)
 Copyright (c) 2014 Chris Wilson
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+
+Adapted from https://github.com/cwilso/PitchDetect
+Copyright (c) 2017 Jason Studstill & Jacob Knaack
+
+LICENSE: The MIT License (MIT) <https://opensource.org/licenses/MIT>
 */
-// Game time limit in ms
-var timeLimit = 30000;
-// Number of ms between pitches collected
-var msBetweenPitches = 5;
-// Timeframe to batch pitches (e.g. collect batch every second) in ms
-var pitchBatchTime = 250;
+
+module.exports = pitchDetect;
+
+/*
+Purpose:
+    Create global array of audio pitches from microphone input
+
+Input:
+    timeInterval: time, in ms, between polling pitch input
+    duration: time, in ms, to continue polling pitch input
+*/
+
 // Define global array of pitches (Populated with updatePitch());
 window.pitchArr = [0];
-window.currentPitch = 0;
-// Collect pitch input for the duration of the time limit
-pitchDetect(msBetweenPitches, timeLimit);
-// Batch Pitches
-var batchPitches = window.setInterval(function() {
-    window.currentPitch = parseInt(getVocalMedia(window.pitchArr)).toFixed(0);
-    console.log(window.currentPitch);
-    // Reset pitchArr
-    window.pitchArr = [0];
-}, pitchBatchTime);
-// Clear pitches Every Second
-window.setTimeout(function() {
-    window.clearInterval(batchPitches);
-}, timeLimit);
+
 function pitchDetect(timeInterval, duration) {
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     var audioContext = null;
@@ -171,14 +153,4 @@ function pitchDetect(timeInterval, duration) {
         }, duration);
     }
 }
-function getVocalMedia(arr) {
-    let values = arr;
-    values.sort((a, b) => a - b);
-    values = values.filter(function(e) {
-        return e < 1200;
-    });
-    let lowMiddle = Math.floor((values.length - 1) / 2);
-    let highMiddle = Math.ceil((values.length - 1) / 2);
-    let median = (values[lowMiddle] + values[highMiddle]) / 2;
-    return median;
-}
+
