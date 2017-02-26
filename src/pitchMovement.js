@@ -9,7 +9,7 @@ var batchPitches = require('./services/batchPitches.js');
   var timeLimit = 30000;
 
   // Number of ms between collecting pitches
-  var msBetweenPitches = 5;
+  var msBetweenPitches = 1;
 
   // Timeframe to batch pitches (e.g. collect batch every second) in ms
   var pitchBatchTime = 250;
@@ -26,7 +26,6 @@ var batchPitches = require('./services/batchPitches.js');
   }, 1000);
 
 
-
   // Begin Pitch Detection
   pitchDetect(msBetweenPitches, timeLimit);
   batchPitches(normalizePitch, pitchBatchTime, timeLimit);
@@ -35,7 +34,7 @@ var batchPitches = require('./services/batchPitches.js');
   // Update Camera Speed from Pitch
   var cameraSpeedInterval = window.setInterval( function() {
     let camera = document.querySelector('#cameraWrapper');
-    camera.setAttribute('wasd-controls', `acceleration: ${window.currentPitch * 5}; easing: 50`);
+    camera.setAttribute('wasd-controls', `acceleration: ${window.currentPitch * 5}; easing: 15`);
     // console.log(camera.components.position.attrValue.z);
     if(camera.components.position.attrValue.z <= -1100) {
       console.log(camera);

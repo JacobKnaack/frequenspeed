@@ -11,6 +11,7 @@ module.exports = function batchPitches(normalizePitch, pitchBatchTime, timeLimit
         window.currentPitch = parseInt(normalizePitch(window.pitchArr)).toFixed(0);
         // Reset pitchArr
         window.pitchArr = [0];
+        console.log(window.currentPitch);
     }, pitchBatchTime);
 
     // Clear pitches after given time
