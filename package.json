@@ -29,6 +29,7 @@
   "devDependencies": {
     "autoprefixer": "^6.7.5",
     "extract-text-webpack-plugin": "^2.0.0",
+    "morgan": "^1.8.1",
     "postcss": "^5.2.15",
     "sass-loader": "^6.0.2",
     "webpack": "^2.2.1",
