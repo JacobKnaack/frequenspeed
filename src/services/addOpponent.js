@@ -46,9 +46,6 @@ window.onload = function() {
         enemyLightTrailDepthAnimation.setAttribute('to', 2400);
         enemyLightTrailDepthAnimation.setAttribute('dur', 35000);
 
-
-
-
     }
 
 

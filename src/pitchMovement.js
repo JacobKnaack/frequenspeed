@@ -6,7 +6,7 @@ var batchPitches = require('./services/batchPitches.js');
 
 
   // Game time limit in ms
-  var timeLimit = 30000;
+  window.timeLimit = 30000;
 
   // Number of ms between collecting pitches
   var msBetweenPitches = 1;
@@ -29,6 +29,19 @@ var batchPitches = require('./services/batchPitches.js');
   // Begin Pitch Detection
   pitchDetect(msBetweenPitches, timeLimit);
   batchPitches(normalizePitch, pitchBatchTime, timeLimit);
+
+
+  // Countdown of time remaining
+  var secondsLeftInterval = window.setInterval(function() {
+    var hudCountdown = document.getElementById('hudCountdown');
+    window.secondsLeft = window.secondsLeft - 1 || (window.timeLimit / 1000)
+    hudCountdown.setAttribute('text', 'value: Time\nRemaining\n\n' + window.secondsLeft);
+
+    if (window.secondsLeft < 1 || window.secondsLeft == window.timeLimit) {
+      window.clearInterval(secondsLeftInterval)
+    }
+  }, 1000);
+
 
 
   // Update Camera Speed from Pitch
