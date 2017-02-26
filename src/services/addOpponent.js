@@ -24,19 +24,30 @@ window.onload = function() {
 
     // Create Light trail behind opponent
     var enemyLightTrail = document.getElementById('enemyLightTrail');
+    var enemyLightTrailPosAnimation = document.getElementById('enemyLightTrailPosAnimation');
+    var enemyLightTrailDepthAnimation = document.getElementById('enemyLightTrailDepthAnimation');
+
 
     // Move Opponenet
     var enemyWrapper = document.getElementById('enemyWrapper');
-    var enemyAnimation = enemyWrapper.querySelectorAll('a-animation');
+    var enemyCyclePosAnimation = document.getElementById('enemyCyclePosAnimation');
+
+    // console.log(enemyCycle.components.position.attrValue.z);
 
 
-    function moveOpponent(timeLimit, enemyAnimation, enemyCycle, enemyLightTrail) {
-        Array.prototype.forEach.call(enemyAnimation, function(e) {
+    function moveOpponent(timeLimit, enemyCyclePosAnimation, enemyCycle, enemyLightTrail) {
+        enemyCyclePosAnimation.setAttribute('to', '-9.5 1 -1200');
+        enemyCyclePosAnimation.setAttribute('dur', 35000)
 
-            e.setAttribute('to', '-9.5 1 -2000');
-            e.setAttribute('dur', 35000)
 
-        })
+        enemyLightTrailPosAnimation.setAttribute('to', '-9.5 1 0');
+        enemyLightTrailPosAnimation.setAttribute('dur', 35000);
+
+        enemyLightTrailDepthAnimation.setAttribute('to', 2400);
+        enemyLightTrailDepthAnimation.setAttribute('dur', 35000);
+
+
+
 
     }
 
@@ -44,7 +55,7 @@ window.onload = function() {
     // Listen for gameStart Event
     document.addEventListener('gameStart', function (e) {
         console.log('gameStarted for Enemy');
-        moveOpponent(e.timeLimit, enemyAnimation, enemyCycle, enemyLightTrail)
+        moveOpponent(e.timeLimit, enemyCyclePosAnimation, enemyCycle, enemyLightTrail)
 
 
 
