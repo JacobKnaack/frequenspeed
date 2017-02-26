@@ -52,6 +52,10 @@ module.exports = {
       {
         test: /\.html$/,
         use: 'html-loader'
+      },
+      {
+        test: /\.(jpg|gif|png|ico)$/,
+        use: 'file-loader$name=img[hash].[ext]'
       }
     ]
   }
