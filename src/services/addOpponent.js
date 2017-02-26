@@ -20,10 +20,36 @@ window.onload = function() {
 
 
     // Create Opponent Avatar
-
-    // Move Opponenet
+    var enemyCycle = document.getElementById('enemyCycle');
 
     // Create Light trail behind opponent
+    var enemyLightTrail = document.getElementById('enemyLightTrail');
+
+    // Move Opponenet
+    var enemyWrapper = document.getElementById('enemyWrapper');
+    var enemyAnimation = enemyWrapper.querySelectorAll('a-animation');
+
+
+    function moveOpponent(timeLimit, enemyAnimation, enemyCycle, enemyLightTrail) {
+        Array.prototype.forEach.call(enemyAnimation, function(e) {
+
+            e.setAttribute('to', '-9.5 1 -2000');
+            e.setAttribute('dur', 35000)
+
+        })
+
+    }
+
+
+    // Listen for gameStart Event
+    document.addEventListener('gameStart', function (e) {
+        console.log('gameStarted for Enemy');
+        moveOpponent(e.timeLimit, enemyAnimation, enemyCycle, enemyLightTrail)
+
+
+
+    }, false);
+
 
 };
 
