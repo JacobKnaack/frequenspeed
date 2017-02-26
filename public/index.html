@@ -3,13 +3,90 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Frequency</title>
+    <title>Frequenspeed</title>
     <script src='bundle.js'></script>
     <link rel="stylesheet" href="bundle.css">
   </head>
   <body>
     <a-scene>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-assets>
+        <img id="sky" src="src/asset/sky_copy.jpeg" />
+      </a-assets>
+      <a-entity
+        id="cameraWrapper"
+        fov="80"
+        look-controls
+        position="0, 0, 1200">
+        <a-camera camera="userHeight: 2.6"></a-camera>
+      </a-entity>
+      <a-sky src="#sky"></a-sky>
+
+      <!-- Tron Ground -->
+      <a-entity geometry="primitive: plane; height: 8000; width: 8000" position="0 -25 -5" rotation="-90 0 0" material="shader: flat; src: url(../src/asset/tron-ground.png); repeat: 80 80"></a-entity>
+
+      <a-plane position="0 0 -3" rotation="-90 0 0" width="4" height="2400" color="white" material="shader: flat; transparent: true; side: double; src: url(../src/asset/highway.png);"></a-plane>
+      <!-- <a-plane position="0 0 -3" rotation="-90 0 0" width="3.5" height="2400" color="white"></a-plane> -->
+      <!-- <a-plane position="0 -.01 -3" rotation="-90 0 0" width="8" height="2400" color="black"></a-plane> -->
+
+      <!-- horizon -->
+      <a-torus color="#999" material="transparent: true" radius="2500" radiusTubular="0.1" scale="2 2 20" rotation="90 0 0"></a-torus>
+
+      <a-entity class="columnPair">
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="-6 0 -50"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="6 0 -50"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="-6 0 -100"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="6 0 -100"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="-6 0 -150"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="6 0 -150"></a-cylinder>
+        <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 -200"></a-cylinder>
+        <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 -200"></a-cylinder>
+      </a-entity>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 -400"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 -400"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 -600"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 -600"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 -800"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 -800"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 -1000"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 -1000"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 -1200"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 -1200"></a-cylinder>
+      <a-entity class="columnPair">
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="-6 0 0"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="6 0 0"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="-6 0 50"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="6 0 50"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="-6 0 100"></a-cylinder>
+        <a-cylinder radius="0.25" height="50" color="#20FFEE" position="6 0 100"></a-cylinder>
+        <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 150"></a-cylinder>
+        <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 150"></a-cylinder>
+      </a-entity>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 200"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 200"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 400"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 400"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 600"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 600"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 800"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 800"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="-6 0 1000"></a-cylinder>
+      <a-cylinder radius="0.5" height="100" color="#20FFEE" position="6 0 1000"></a-cylinder>
+      <a-text position="0 2 1194" color="#04FF0B" text="value: Yell Forward; width: 10; align: center;"></a-text>
+      <a-text position="0 2 -1203" color="red" text="value: Bitch You Win; width: 10; align: center;"></a-text>
+
+      <a-entity id="enemyWrapper">
+
+        <!-- Opponent Vehicle -->
+        <a-box id="enemyCycle" width="0" height="1" depth="3" color="#D77044" transparent="true" position="-9.5 1 1195" src="url(../src/asset/enemy_bike_side.png)">
+          <a-animation id="enemyCyclePosAnimation" attribute="position" from="-9.5 1 1195" to="-9.5 1 1195" dur="0" repeat="indefinite"></a-animation>
+        </a-box>
+
+        <!-- Opponent Light Trail -->
+        <a-box id="enemyLightTrail" width="0" height="1" depth="0" color="#D77044" transparent="true" position="-9.5 1 1196.5">
+          <a-animation id="enemyLightTrailPosAnimation" attribute="position" from="-9.5 1 1196.5" to="-9.5 1 1196.5" dur="0" repeat="indefinite"></a-animation>
+          <a-animation id="enemyLightTrailDepthAnimation" attribute="depth" from="0" to="0"dur="0" repeat="indefinite"></a-animation>
+        </a-box>
+      </a-entity>
     </a-scene>
   </body>
 </html>
