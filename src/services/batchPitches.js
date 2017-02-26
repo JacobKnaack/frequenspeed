@@ -9,7 +9,6 @@ module.exports = function batchPitches(normalizePitch, pitchBatchTime, timeLimit
 
     var batchPitches = window.setInterval(function() {
         window.currentPitch = parseInt(normalizePitch(window.pitchArr)).toFixed(0);
-        console.log(window.currentPitch);
         // Reset pitchArr
         window.pitchArr = [0];
     }, pitchBatchTime);
