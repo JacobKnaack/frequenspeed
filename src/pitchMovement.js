@@ -5,7 +5,7 @@ var normalizePitch = require('./services/normalizePitch.js');
 var batchPitches = require('./services/batchPitches.js');
 
 // Game time limit in ms
-var timeLimit = 30000;
+var timeLimit = 5000;
 
 // Number of ms between collecting pitches
 var msBetweenPitches = 5;
@@ -26,11 +26,21 @@ var cameraSpeedInterval = window.setInterval( function() {
     console.log(camera);
     camera.setAttribute('wasd-controls', 'enabled: false');
     camera.setAttribute('wasd-controls', 'acceleration: 0');
+
+    //
     window.clearInterval(cameraSpeedInterval);
   }
 }, pitchBatchTime);
 
 // Stop updating speed when time runs out
 window.setTimeout(function() {
+
+  // Stop Updating Speed when game time runs out
   window.clearInterval(cameraSpeedInterval);
+
+  let camera = document.querySelector('#cameraWrapper');
+  camera.setAttribute('wasd-controls', 'enabled: false');
+  camera.setAttribute('wasd-controls', 'acceleration: 0');
+  camera.removeAttribute('wasd-controls');
+
 }, timeLimit);
