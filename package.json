@@ -2,11 +2,11 @@
   "name": "vr-sound-check",
   "version": "0.1.0",
   "description": "vr sound project",
-  "main": "index.js",
+  "main": "./src/entry.js",
   "scripts": {
     "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
     "start": "node ./server.js",
-    "heroku-postbuild": "./node_modules/webpack/bin/webpack.js"
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "author": "",
   "license": "ISC",
