@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot",
     "start": "node ./server.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "./node_modules/webpack/bin/webpack.js"
   },
   "author": "",
   "license": "ISC",
